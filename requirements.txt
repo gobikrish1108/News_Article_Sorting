@@ -1,0 +1,8 @@
+pandas
+nltk
+scikit-learn
+tensorflow
+keras
+Flask
+
+-e .
