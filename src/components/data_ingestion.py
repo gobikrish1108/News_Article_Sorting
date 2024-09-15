@@ -19,27 +19,27 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method for the News Article Sorting Project")
         try:
-            # Read the news dataset
-            df = pd.read_csv('BBC_News_processed.csv')  # Adjust the path to your dataset
+            
+            df = pd.read_csv('BBC_News_processed.csv')  
             logging.info("Successfully read the news dataset into a dataframe")
 
-            # Create directory for the artifacts if it does not exist
+            
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
 
-            # Save the raw dataset to the artifacts folder
+            
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
             logging.info("Saved raw dataset to artifacts folder")
 
-            # Split the dataset into train and test sets (80/20 split)
+        
             logging.info("Initiating train-test split")
             train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
 
-            # Save train and test sets to their respective paths
+            
             train_set.to_csv(self.ingestion_config.train_data_path, index=False, header=True)
             test_set.to_csv(self.ingestion_config.test_data_path, index=False, header=True)
             logging.info("Train-test split completed and saved to artifacts folder")
 
-            # Return the paths of train and test datasets
+            
             return (
                 self.ingestion_config.train_data_path,
                 self.ingestion_config.test_data_path
