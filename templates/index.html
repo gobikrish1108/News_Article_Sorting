@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Classification App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Text Classification App</h1>
+            <form method="post">
+                <textarea name="text_input" rows="10" placeholder="Enter text here..." required></textarea>
+                <div class="buttons">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="reset" class="clear-btn">Clear</button>
+                </div>
+            </form>
+            {% if category %}
+            <div class="result">
+                <h2>Predicted Category: {{ category }}</h2>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
