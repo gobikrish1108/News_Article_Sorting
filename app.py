@@ -7,10 +7,10 @@ from tensorflow.keras.models import load_model
 app = Flask(__name__)
 
 # Load model, tokenizer, and label encoder
-model = load_model('text_classifier_model4.h5')
-with open('tokenizer.pkl', 'rb') as file:
+model = load_model('artifacts/text_classifier_model4.h5')
+with open('artifacts/tokenizer.pkl', 'rb') as file:
     tokenizer = pickle.load(file)
-with open('label_encoder.pkl', 'rb') as file:
+with open('artifacts/label_encoder.pkl', 'rb') as file:
     label_encoder = pickle.load(file)
 
 # Function to preprocess input text and predict the category
@@ -28,7 +28,7 @@ def index():
         user_input = request.form['text_input']
         if user_input:
             category = preprocess_and_predict(user_input)
-    return render_template('index.html', category=category)
+    return render_template('templates/index.html', category=category)
 
 if __name__ == '__main__':
     app.run(debug=True)
